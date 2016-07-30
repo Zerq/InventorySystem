@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory", "Inventory\Inventory.csproj", "{2C7F25E6-9E61-4E85-9B6C-9D764AF69FA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lock", "Lock\Lock.csproj", "{832DAA7B-68B0-43CC-914C-D19F21A78E7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C7F25E6-9E61-4E85-9B6C-9D764AF69FA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C7F25E6-9E61-4E85-9B6C-9D764AF69FA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C7F25E6-9E61-4E85-9B6C-9D764AF69FA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C7F25E6-9E61-4E85-9B6C-9D764AF69FA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{832DAA7B-68B0-43CC-914C-D19F21A78E7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{832DAA7B-68B0-43CC-914C-D19F21A78E7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{832DAA7B-68B0-43CC-914C-D19F21A78E7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{832DAA7B-68B0-43CC-914C-D19F21A78E7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45
+	EndGlobalSection
+EndGlobal
