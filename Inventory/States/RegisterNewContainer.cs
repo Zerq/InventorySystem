@@ -14,13 +14,10 @@ namespace Inventory.States {
             }
         }
         List<MenuItem> list = new List<MenuItem>() {
-            new MenuItem() { Text="Scan", Do=()=> {
-               ScanWizard();
-            } },
-            new MenuItem() { Text="Print", Do=()=> {
-                PrintWizard();
-            } }
-
+            new MenuItem() { Text="Scan",  Do=()=>ScanWizard() },
+            new MenuItem() { Text="Print", Do=()=>PrintWizard()},
+            new MenuItem() { Text="Back", Do=()=> Program.Current.ChangeState(Lock.Singleton<ListContainersState>.GetInstance())
+            }
         };
 
         private static void PrintWizard() {

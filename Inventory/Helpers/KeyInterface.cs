@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Inventory.Helpers {
     //ok so i should have this as two separete files but meh it only a inparameter class so i can use params...
-
     public class KeyHook<T> {
         public KeyHook(ConsoleKey key, Action<T> action) {
             this.Key = key;

@@ -32,8 +32,7 @@ namespace Inventory.Migrations
                 .ForeignKey("dbo.Items", t => t.Id)
                 .Index(t => t.Id);
             
-        }
-        
+        }        
         public override void Down()
         {
             DropForeignKey("dbo.Container", "Id", "dbo.Items");

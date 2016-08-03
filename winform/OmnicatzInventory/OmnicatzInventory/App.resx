@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Target" xml:space="preserve">
-    <value>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</value>
-  </data>
-  <data name="DefaultSchema" xml:space="preserve">
-    <value>dbo</value>
-  </data>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>132, 17</value>
+  </metadata>
 </root>
