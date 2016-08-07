@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory", "Inventory\Inve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lock", "Lock\Lock.csproj", "{832DAA7B-68B0-43CC-914C-D19F21A78E7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmnicatzInventory", "OmnicatzInventory\OmnicatzInventory.csproj", "{8DBB4454-A9D6-4F32-9B75-8DB1563A2E3A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Omnitory", "Omnitory\Omnitory.csproj", "{24DB5285-4197-4ABB-B925-97222E445581}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{832DAA7B-68B0-43CC-914C-D19F21A78E7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{832DAA7B-68B0-43CC-914C-D19F21A78E7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{832DAA7B-68B0-43CC-914C-D19F21A78E7D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8DBB4454-A9D6-4F32-9B75-8DB1563A2E3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8DBB4454-A9D6-4F32-9B75-8DB1563A2E3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8DBB4454-A9D6-4F32-9B75-8DB1563A2E3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8DBB4454-A9D6-4F32-9B75-8DB1563A2E3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24DB5285-4197-4ABB-B925-97222E445581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24DB5285-4197-4ABB-B925-97222E445581}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24DB5285-4197-4ABB-B925-97222E445581}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24DB5285-4197-4ABB-B925-97222E445581}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

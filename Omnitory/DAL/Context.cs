@@ -1,4 +1,4 @@
-﻿using Inventory.Model;
+﻿using Omnitory.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Inventory.DAL {
+namespace Omnitory.DAL {
     public class Context : DbContext {
         public Context(): base("DefaultConnection") {}
         public DbSet<Item> Items { get; set; }

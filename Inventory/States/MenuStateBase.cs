@@ -9,17 +9,17 @@ using Inventory.Helpers;
 
 namespace Inventory.States
 {
-    public abstract class MenuStateBase : StateBase  {
+    public abstract class MenuStateBase : StateBase, IMenuState {
         public MenuStateBase(LockToken lockToken) : base(lockToken) {
         }
 
-        private int selectionIndex = 0;
+        protected int selectionIndex = 0;
         public abstract List<MenuItem> menuItems { get; }
         public abstract string Title { get; }
         public abstract string Description { get; }
-       
 
-        private void Upp() {
+
+        public void Upp() {
             selectionIndex--;
             if (selectionIndex < 0) {
                 if (menuItems.Count > 0) {
@@ -29,25 +29,28 @@ namespace Inventory.States
                 }
             }
         }
-        private void Down() {
+        public void Down() {
             selectionIndex++;
             if (selectionIndex >= menuItems.Count) {
                 selectionIndex = 0;
             }
         }
-        private void DoMenuAction() {
-            menuItems[selectionIndex].Do();
+        public void DoMenuAction() {
+            menuItems[selectionIndex].Do(menuItems[selectionIndex]);
         }
 
-        private KeyInterface<MenuStateBase> KeyInterface = new KeyInterface<MenuStateBase>(
-            new KeyHook<MenuStateBase>(ConsoleKey.UpArrow, n => n.Upp()),
-            new KeyHook<MenuStateBase>(ConsoleKey.DownArrow, n=> n.Down()),
-            new KeyHook<MenuStateBase>(ConsoleKey.Enter, n=> n.DoMenuAction())
+
+       private KeyInterface<IMenuState> keyInterface = new KeyInterface<IMenuState>(
+            new KeyHook<IMenuState>(ConsoleKey.UpArrow, n => n.Upp()),
+            new KeyHook<IMenuState>(ConsoleKey.DownArrow, n => n.Down()),
+            new KeyHook<IMenuState>(ConsoleKey.Enter, n => n.DoMenuAction())
             );
 
-      
+        protected virtual KeyInterface<IMenuState> KeyInterface {
+          get { return keyInterface; }
+        }
 
- 
+
 
 
         protected override void PostRenderUpdate() {
@@ -64,12 +67,14 @@ namespace Inventory.States
             UI.WriteLine(Description, ConsoleColor.Yellow);
             for(var i=0; i<menuItems.Count; i++) {
                 var item = menuItems[i];
-                if (i == selectionIndex) {
-                    UI.WriteLine(item.Text, ConsoleColor.Red);
-                } else {
-                    UI.WriteLine(item.Text, ConsoleColor.White);
-                }
+                item.DrawText(i == selectionIndex);
             }
         }
+    }
+
+    public interface IMenuState {
+        void DoMenuAction();
+        void Down();
+        void Upp();
     }
 }

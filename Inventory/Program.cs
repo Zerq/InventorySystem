@@ -13,12 +13,11 @@ namespace Inventory {
       
         static void Main(string[] args) {
 
-            var x = Console.ReadLine();
-
+      
 
 
             makeBorderless();
-            SetConsoleFont();
+          //  SetConsoleFont();
 
 
             AppDomain.CurrentDomain.SetData("DataDirectory", $@"{new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName}\App_Data");

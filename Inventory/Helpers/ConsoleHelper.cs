@@ -13,7 +13,7 @@ namespace Inventory.Helpers {
             Console.CursorLeft = 0;
             Console.CursorTop = 0;
         }
-        private static void Color(Action action, ConsoleColor? fore, ConsoleColor? back) {
+        private static void Color(Action action, ConsoleColor? fore= null, ConsoleColor? back = null) {
             if (fore.HasValue && back.HasValue) {
                 Console.ForegroundColor = fore.Value;
                 Console.BackgroundColor = back.Value;

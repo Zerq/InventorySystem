@@ -16,16 +16,16 @@ namespace Inventory.States {
             }
         }
         private List<MenuItem> items = new List<MenuItem>() {
-            new MenuItem { Text="List All Containers", Do=()=> {
+            new MenuItem { Text="List All Containers", Do= act => {
                 Program.Current.ChangeState(Lock.Singleton<ListContainersState>.GetInstance());
  
             }
             },
-                new MenuItem { Text="option 2", Do=()=> {
+                new MenuItem { Text="option 2", Do= act => {
 
             }
             },
-                    new MenuItem { Text="option 3", Do=()=> {
+                    new MenuItem { Text="option 3", Do= act => {
 
             }
             }

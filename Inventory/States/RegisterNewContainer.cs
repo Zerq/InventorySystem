@@ -14,9 +14,9 @@ namespace Inventory.States {
             }
         }
         List<MenuItem> list = new List<MenuItem>() {
-            new MenuItem() { Text="Scan",  Do=()=>ScanWizard() },
-            new MenuItem() { Text="Print", Do=()=>PrintWizard()},
-            new MenuItem() { Text="Back", Do=()=> Program.Current.ChangeState(Lock.Singleton<ListContainersState>.GetInstance())
+            new MenuItem() { Text="Scan",  Do= act=>ScanWizard() },
+            new MenuItem() { Text="Print", Do= act=>PrintWizard()},
+            new MenuItem() { Text="Back", Do= act=> Program.Current.ChangeState(Lock.Singleton<ListContainersState>.GetInstance())
             }
         };
 
@@ -42,12 +42,13 @@ namespace Inventory.States {
             UI.WriteLine("");
 
             UI.Write("Add a comma separated taglist:", ConsoleColor.Yellow);
-            container.Tags = Console.ReadLine();
+            container.Tags = TagDialog.Instance.Select(container.Tags);
             UI.WriteLine("");
 
             UI.WriteLine("type y to confirm and save", ConsoleColor.Red);
             if (Console.ReadKey().KeyChar.ToString().ToLower() == "y") {
                 container.Added = DateTime.Now;
+                container.Items = new List<Model.Item>();
                 Singleton<DAL.DB>.GetInstance().context.Containers.Add(container);
                 Singleton<DAL.DB>.GetInstance().context.SaveChanges();
                 Program.Current.ChangeState(Lock.Singleton<ListContainersState>.GetInstance());
