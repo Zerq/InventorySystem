@@ -1,4 +1,5 @@
-﻿using Omnitory.DAL;
+﻿using DYMO.Label.Framework;
+using Omnitory.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,6 +53,8 @@ namespace Omnitory {
      
                 var item = Db.Context.Items.FirstOrDefault(n => n.Id == barcode.Text);
                 if (item != null) {
+                Result = item;
+                DialogResult = DialogResult.OK;
                     //select this item and exit dialog
                 } else {
                     // reveal add item ui
@@ -64,6 +67,14 @@ namespace Omnitory {
             this.Size = new Size(355, 123);
             RenderCombo();
             Result = null;
+
+            barcode.Text = "";
+             nameBox.Text = "";
+             descriptionBox.Text = "";
+       
+                 taglistBox.Items.Clear();
+            barcode.Focus();
+
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e) {
@@ -111,6 +122,22 @@ namespace Omnitory {
 
         private void AddItem_Load_1(object sender, EventArgs e) {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+          //  "85fdbd26-0a86-4ce4-944c-14b5546e7283"
+            var key = Guid.NewGuid().ToString().ToUpper().Substring(0, 8);
+
+            while (DAL.Db.Context.Items.Count(n => n.Id == key) > 0) {
+                key = Guid.NewGuid().ToString().Substring(0, 8);
+            }
+
+            Printers x = new Printers();
+            var printer = x.First();
+            ILabel label = DYMO.Label.Framework.Label.Open("barcode.label");
+            label.SetObjectText("BARCODE", key);
+            label.Print(printer);
+           
         }
     }
 }

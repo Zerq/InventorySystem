@@ -39,7 +39,6 @@
             this.editItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.taglistView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
@@ -54,10 +53,10 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 24);
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(822, 367);
+            this.tabControl1.Size = new System.Drawing.Size(822, 369);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -67,7 +66,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(814, 341);
+            this.tabPage1.Size = new System.Drawing.Size(814, 365);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Tags";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -115,7 +114,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(814, 341);
+            this.tabPage2.Size = new System.Drawing.Size(814, 343);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Containers/items";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -123,19 +122,24 @@
             // ItemListView
             // 
             this.ItemListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ItemListView.LargeImageList = this.imageList1;
             this.ItemListView.Location = new System.Drawing.Point(3, 27);
             this.ItemListView.Name = "ItemListView";
-            this.ItemListView.Size = new System.Drawing.Size(808, 311);
+            this.ItemListView.Size = new System.Drawing.Size(808, 313);
+            this.ItemListView.SmallImageList = this.imageList1;
             this.ItemListView.TabIndex = 0;
             this.ItemListView.UseCompatibleStateImageBehavior = false;
+            this.ItemListView.View = System.Windows.Forms.View.SmallIcon;
+            this.ItemListView.SelectedIndexChanged += new System.EventHandler(this.ItemListView_SelectedIndexChanged);
+            this.ItemListView.DoubleClick += new System.EventHandler(this.ItemListView_DoubleClick);
             // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "item.png");
-            this.imageList1.Images.SetKeyName(1, "container.png");
+            this.imageList1.Images.SetKeyName(0, "file__.png");
+            this.imageList1.Images.SetKeyName(1, "folder_.png");
+            this.imageList1.Images.SetKeyName(2, "item.png");
+            this.imageList1.Images.SetKeyName(3, "container.png");
             // 
             // menuStrip3
             // 
@@ -158,15 +162,19 @@
             // 
             // editItemToolStripMenuItem
             // 
+            this.editItemToolStripMenuItem.Enabled = false;
             this.editItemToolStripMenuItem.Name = "editItemToolStripMenuItem";
             this.editItemToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editItemToolStripMenuItem.Text = "Edit";
+            this.editItemToolStripMenuItem.Click += new System.EventHandler(this.editItemToolStripMenuItem_Click);
             // 
             // deleteItemToolStripMenuItem
             // 
+            this.deleteItemToolStripMenuItem.Enabled = false;
             this.deleteItemToolStripMenuItem.Name = "deleteItemToolStripMenuItem";
             this.deleteItemToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.deleteItemToolStripMenuItem.Text = "Delete";
+            this.deleteItemToolStripMenuItem.Click += new System.EventHandler(this.deleteItemToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -176,15 +184,6 @@
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "Tags";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(822, 24);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
-            // 
             // taglistView
             // 
             this.taglistView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -193,7 +192,7 @@
             this.taglistView.LargeImageList = this.imageList1;
             this.taglistView.Location = new System.Drawing.Point(3, 27);
             this.taglistView.Name = "taglistView";
-            this.taglistView.Size = new System.Drawing.Size(808, 311);
+            this.taglistView.Size = new System.Drawing.Size(808, 335);
             this.taglistView.TabIndex = 1;
             this.taglistView.UseCompatibleStateImageBehavior = false;
             this.taglistView.View = System.Windows.Forms.View.Details;
@@ -209,10 +208,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(822, 391);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.statusStrip1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -236,7 +233,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ListView ItemListView;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.MenuStrip menuStrip2;

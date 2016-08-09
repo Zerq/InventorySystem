@@ -14,6 +14,7 @@ namespace Omnitory.Model
         public virtual List<Tag> Tags { get; set; }
 
         public virtual Container Container { get; set; }
+        public virtual string ContainerId { get; set; }
         public override bool Equals(object obj) {
             if (obj is Item) {
                 return this.Id == (obj as Item).Id;

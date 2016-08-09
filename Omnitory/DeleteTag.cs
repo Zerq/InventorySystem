@@ -21,5 +21,9 @@ namespace Omnitory {
         private void button1_Click(object sender, EventArgs e) {
             DialogResult = DialogResult.Cancel;
         }
+
+        private void DeleteTag_Shown(object sender, EventArgs e) {
+          
+        }
     }
 }

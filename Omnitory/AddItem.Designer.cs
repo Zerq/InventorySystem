@@ -58,25 +58,26 @@
             // 
             this.barcode.Location = new System.Drawing.Point(79, 10);
             this.barcode.Name = "barcode";
-            this.barcode.Size = new System.Drawing.Size(142, 20);
+            this.barcode.Size = new System.Drawing.Size(110, 20);
             this.barcode.TabIndex = 1;
             this.barcode.Leave += new System.EventHandler(this.barcode_Leave);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(227, 8);
+            this.button1.Location = new System.Drawing.Point(195, 8);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 23);
+            this.button1.Size = new System.Drawing.Size(112, 23);
             this.button1.TabIndex = 2;
-            this.button1.Text = "Print barcode";
+            this.button1.Text = "Print new barcode";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 376);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(339, 10);
+            this.panel3.Size = new System.Drawing.Size(349, 10);
             this.panel3.TabIndex = 8;
             // 
             // panel1
@@ -88,13 +89,13 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 347);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(339, 29);
+            this.panel1.Size = new System.Drawing.Size(349, 29);
             this.panel1.TabIndex = 9;
             // 
             // button2
             // 
             this.button2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button2.Location = new System.Drawing.Point(188, 0);
+            this.button2.Location = new System.Drawing.Point(198, 0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(45, 29);
             this.button2.TabIndex = 5;
@@ -105,7 +106,7 @@
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(233, 0);
+            this.panel2.Location = new System.Drawing.Point(243, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(15, 29);
             this.panel2.TabIndex = 6;
@@ -113,7 +114,7 @@
             // button3
             // 
             this.button3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button3.Location = new System.Drawing.Point(248, 0);
+            this.button3.Location = new System.Drawing.Point(258, 0);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(78, 29);
             this.button3.TabIndex = 4;
@@ -124,7 +125,7 @@
             // panel4
             // 
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(326, 0);
+            this.panel4.Location = new System.Drawing.Point(336, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(13, 29);
             this.panel4.TabIndex = 7;
@@ -223,7 +224,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(339, 386);
+            this.ClientSize = new System.Drawing.Size(349, 386);
             this.Controls.Add(this.isContainer);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);

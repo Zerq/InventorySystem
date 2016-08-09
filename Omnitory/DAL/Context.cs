@@ -20,9 +20,10 @@ namespace Omnitory.DAL {
             base.OnModelCreating(m);
     
             m.Entity<Item>().HasKey(n => n.Id);
+           
             m.Entity<Item>().HasMany(n => n.Tags).WithMany();    
             m.Entity<Container>().ToTable("Containers");
-            m.Entity<Container>().HasMany(n => n.Items).WithOptional(n => n.Container);
+            m.Entity<Container>().HasMany(n => n.Items).WithOptional(n => n.Container).HasForeignKey(n => n.ContainerId);
 
             m.Entity<Tag>().HasKey(n => n.Id);
         }

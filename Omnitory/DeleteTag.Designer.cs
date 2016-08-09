@@ -80,6 +80,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "DeleteTag";
             this.Text = "Delete Tag";
+            this.Shown += new System.EventHandler(this.DeleteTag_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

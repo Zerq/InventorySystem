@@ -16,20 +16,36 @@ namespace Omnitory {
         }
         public Model.Container CurrentContainer;
         private void RenderTagList() {
+            taglistView.Items.Clear();
             var list = Db.Context.Tags.ToList().Select(n => new SpecialListViewItem<Model.Tag>(n) { ImageIndex = 1 }).ToArray();
             taglistView.Items.Clear();
             taglistView.Items.AddRange(list);
 
         }
         private void RenderItemList() {
-            var continers = Db.Context.Containers.Where(n => n.Container == CurrentContainer).ToList();
-            var items = Db.Context.Containers.Where(n => n.Container == CurrentContainer).ToList().Where(n=> n.GetType() == typeof(Model.Item)).ToList();
             ItemListView.Items.Clear();
+            List<Model.Container> continers;
+            List<Model.Item> items;
+
+            if (CurrentContainer == null) {
+                continers = Db.Context.Containers.Where(n => n.Container == null).ToList();
+                items = Db.Context.Items.Where(n => n.Container == null).ToList().Where(n => !(n is Model.Container)).ToList();
+            } else {
+                var x = Db.Context.Items.Where(n => n.Container.Id == CurrentContainer.Id).ToList();
+                continers = Db.Context.Containers.Where(n => n.Container.Id == CurrentContainer.Id).ToList();
+                items = Db.Context.Items.Where(n => n.Container.Id == CurrentContainer.Id).ToList().Where(n => !(n is Model.Container)).ToList();
+            }
+
+
+            ItemListView.Items.Clear();
+            if (CurrentContainer != null) {
+                ItemListView.Items.Add(new SpecialListViewItem<Model.Container>(CurrentContainer.Container) { Text = "..", ImageIndex = 1 });
+            }
             foreach (var container in continers) {
-                ItemListView.Items.Add(new SpecialListViewItem<Model.Container>(container) { ImageIndex = 0 });
+                ItemListView.Items.Add(new SpecialListViewItem<Model.Container>(container) { ImageIndex = 1 });
             }
             foreach (var item in items) {
-                ItemListView.Items.Add(new SpecialListViewItem<Model.Item>(item) { ImageIndex = 1 });
+                ItemListView.Items.Add(new SpecialListViewItem<Model.Item>(item) { ImageIndex = 0});
             }
         }
         private void Form1_Load(object sender, EventArgs e) {
@@ -48,7 +64,9 @@ namespace Omnitory {
                 }
                 set {
                     special = value;
-                    this.Text = value.ToString();
+                    if (value != null) {
+                        this.Text = value.ToString();
+                    }
                 }
             }
         }
@@ -110,7 +128,7 @@ namespace Omnitory {
         private void deleteTagToolStripMenuItem_Click(object sender, EventArgs e) {
             if (taglistView.SelectedItems.Count > 0) {
                 var tag = (taglistView.SelectedItems[0] as SpecialListViewItem<Model.Tag>).Special;
-                EditDialog.TagName.Text = tag.Name;
+                DeleteDialog.TagName.Text = tag.Name;
 
                 var x = DeleteDialog.ShowDialog();
 
@@ -130,12 +148,28 @@ namespace Omnitory {
             if (CurrentContainer != null) {
                 CurrentContainer.Items.Add(AddItemdialog);
                 Db.Context.Entry(CurrentContainer).State = System.Data.Entity.EntityState.Modified;
+                RenderItemList();
             } else {
                 if (AddItemdialog is Model.Container) {
-                    Db.Context.Containers.Add(AddItemdialog as Model.Container);
+                    if (Db.Context.Containers.Count(n => n.Id == AddItemdialog.Id) > 0) {
+                        AddItemdialog.ContainerId = CurrentContainer?.Id ?? null;
+                        Db.Context.Entry(AddItemdialog).State = System.Data.Entity.EntityState.Modified;
+                    } else {
 
+
+                        Db.Context.Containers.Add(AddItemdialog as Model.Container);
+                    }  
+                      
+                    RenderItemList();
                 } else if (AddItemdialog is Model.Item) {
-                    Db.Context.Items.Add(AddItemdialog as Model.Item);
+                    if (Db.Context.Items.Count(n=> n.Id == AddItemdialog.Id) > 0) {
+                        AddItemdialog.ContainerId = CurrentContainer?.Id ?? null;
+
+                        Db.Context.Entry(AddItemdialog).State = System.Data.Entity.EntityState.Modified;
+                    } else {
+                        Db.Context.Items.Add(AddItemdialog as Model.Item);
+                    }
+                    RenderItemList();
                 }
             }
         }
@@ -145,6 +179,75 @@ namespace Omnitory {
                 AddToContainer(AddItemdialog.Result);
                 Db.Context.SaveChanges();
                 RenderItemList();
+            }
+        }
+
+        private void ItemListView_DoubleClick(object sender, EventArgs e) {
+            if (ItemListView.SelectedItems.Count > 0) {
+                var container = ItemListView.SelectedItems[0] as SpecialListViewItem<Model.Container>;
+                var item = ItemListView.SelectedItems[0] as SpecialListViewItem<Model.Item>;
+
+            
+                if (container != null) {
+                    CurrentContainer = container.Special;
+                    RenderItemList();
+                }
+
+
+
+            }
+
+        }
+
+        private void ItemListView_SelectedIndexChanged(object sender, EventArgs e) {
+            if (ItemListView.SelectedItems.Count > 0) {
+                editItemToolStripMenuItem.Enabled = true;
+                deleteItemToolStripMenuItem.Enabled = true;
+            } else {
+                editItemToolStripMenuItem.Enabled = false;
+                deleteItemToolStripMenuItem.Enabled = false;
+            }
+        }
+
+        private void deleteItemToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (ItemListView.SelectedItems.Count > 0) {
+                var item = ItemListView.SelectedItems[0] as SpecialListViewItem<Model.Item> as SpecialListViewItem<Model.Item>;
+                var container_ = ItemListView.SelectedItems[0] as SpecialListViewItem<Model.Container> as SpecialListViewItem<Model.Container>;
+                if (item != null) {
+                    DeleteDialog.TagName.Text = item.Special.Name;
+                    var x = DeleteDialog.ShowDialog();
+                    if (x == DialogResult.OK) { 
+                        Db.Context.Items.Remove(item.Special);
+                        Db.Context.SaveChanges();
+                        RenderItemList();
+                    }
+                }
+                if (container_ != null) {
+    
+                   // Db.Context.Containers.Remove(container_.Special);
+                   // Db.Context.SaveChanges();
+                  //  RenderItemList();
+                }
+            }
+        }
+        EditItem editItemDialog = new EditItem();
+        private void editItemToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (ItemListView.SelectedItems.Count > 0) {
+                var item = ItemListView.SelectedItems[0] as SpecialListViewItem<Model.Item> as SpecialListViewItem<Model.Item>;
+                var container_ = ItemListView.SelectedItems[0] as SpecialListViewItem<Model.Container> as SpecialListViewItem<Model.Container>;
+
+                if (item != null) {
+                    editItemDialog.Item = item.Special;
+                }
+                if (container_ != null) {
+                    editItemDialog.Item = container_.Special;
+                }
+
+                if (editItemDialog.ShowDialog() == DialogResult.OK) {
+                    Db.Context.Entry(editItemDialog.Item).State = System.Data.Entity.EntityState.Modified;
+                    Db.Context.SaveChanges();
+                    RenderItemList();
+                }
             }
         }
     }
