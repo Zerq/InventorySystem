@@ -231,22 +231,42 @@ namespace Omnitory {
             }
         }
         EditItem editItemDialog = new EditItem();
+
+        private void EditItem(SpecialListViewItem<Model.Item> special, Model.Item item = null) {
+            var item_ = ItemListView.SelectedItems[0] as SpecialListViewItem<Model.Item>;
+            var container_ = ItemListView.SelectedItems[0] as SpecialListViewItem<Model.Container>;
+
+            if (item_ != null) {
+                editItemDialog.Item = item_.Special;
+            }
+            if (container_ != null) {
+                editItemDialog.Item = container_.Special;
+            }
+
+            if (editItemDialog.ShowDialog() == DialogResult.OK) {
+                Db.Context.Entry(editItemDialog.Item).State = System.Data.Entity.EntityState.Modified;
+                Db.Context.SaveChanges();
+                RenderItemList();
+            }
+        }
+
         private void editItemToolStripMenuItem_Click(object sender, EventArgs e) {
             if (ItemListView.SelectedItems.Count > 0) {
-                var item = ItemListView.SelectedItems[0] as SpecialListViewItem<Model.Item> as SpecialListViewItem<Model.Item>;
-                var container_ = ItemListView.SelectedItems[0] as SpecialListViewItem<Model.Container> as SpecialListViewItem<Model.Container>;
 
-                if (item != null) {
-                    editItemDialog.Item = item.Special;
-                }
-                if (container_ != null) {
-                    editItemDialog.Item = container_.Special;
-                }
 
-                if (editItemDialog.ShowDialog() == DialogResult.OK) {
-                    Db.Context.Entry(editItemDialog.Item).State = System.Data.Entity.EntityState.Modified;
-                    Db.Context.SaveChanges();
+            
+            }
+        }
+
+        private void toolStripTextBox1_Leave(object sender, EventArgs e) {
+            var item = Db.Context.Items.FirstOrDefault(n => n.Id == toolStripTextBox1.Text);
+            if (item != null) {
+                if (item is Model.Container) {
+                    CurrentContainer = item as Model.Container;
                     RenderItemList();
+                } else {
+                    editItemDialog.Item = item;
+
                 }
             }
         }

@@ -102,12 +102,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lock\Lock.csproj">
-      <Project>{832daa7b-68b0-43cc-914c-d19f21a78e7d}</Project>
-      <Name>Lock</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
