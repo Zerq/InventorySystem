@@ -2,12 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<Button  
-    android:id="@+id/MyButton"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/Hello"
-    />
+    android:layout_height="fill_parent">
+    <Button
+        android:text="Configue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Configue" />
+    <Button
+        android:text="Switch Container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/SwitchContainer" />
+    <Button
+        android:text="Add To Container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/AddToContainer" />
+    <TextView
+        android:text="ContainerName"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ContainerName" />
+    <TextView
+        android:text="ContainerDescription"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ContainerDescription" />
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ItemListView" />
 </LinearLayout>

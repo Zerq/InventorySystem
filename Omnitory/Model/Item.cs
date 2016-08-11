@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace Omnitory.Model
 {
     public class Item
@@ -12,7 +10,7 @@ namespace Omnitory.Model
         public string Description { get; set; }
         public DateTime Added { get; set; }
         public virtual List<Tag> Tags { get; set; }
-
+        [JsonIgnore]
         public virtual Container Container { get; set; }
         public virtual string ContainerId { get; set; }
         public override bool Equals(object obj) {

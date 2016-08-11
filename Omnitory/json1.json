@@ -1,0 +1,363 @@
+﻿{
+  "Tags": [ ],
+  "Items": [
+    {
+      "Tags": [
+        {
+          "Id": "7229b336-8442-400a-adba-5674b2e86c5a",
+          "Name": "Tool"
+        }
+      ],
+      "Id": "11DDB3C3",
+      "Name": "Normal Size Wood clamp",
+      "Description": "",
+      "Added": "2016-08-09T20:23:51.057",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "7229b336-8442-400a-adba-5674b2e86c5a",
+          "Name": "Tool"
+        },
+        {
+          "Id": "310eba46-9738-4ff8-a6df-9c7da7f70d6b",
+          "Name": "Mätinstrument"
+        }
+      ],
+      "Id": "24746CC0",
+      "Name": "Digitalt Vinkelmått",
+      "Description": "",
+      "Added": "2016-08-09T20:37:02.957",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "7229b336-8442-400a-adba-5674b2e86c5a",
+          "Name": "Tool"
+        }
+      ],
+      "Id": "24CA4FF3",
+      "Name": "Liten Kulhammare",
+      "Description": "",
+      "Added": "2016-08-09T21:22:34.94",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "7229b336-8442-400a-adba-5674b2e86c5a",
+          "Name": "Tool"
+        }
+      ],
+      "Id": "25EFF68D",
+      "Name": "18mm wood chisel",
+      "Description": "",
+      "Added": "2016-08-09T20:07:53.987",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "7229b336-8442-400a-adba-5674b2e86c5a",
+          "Name": "Tool"
+        },
+        {
+          "Id": "310eba46-9738-4ff8-a6df-9c7da7f70d6b",
+          "Name": "Mätinstrument"
+        }
+      ],
+      "Id": "2A3100B2",
+      "Name": "Mini vattenpass",
+      "Description": "",
+      "Added": "2016-08-09T21:14:00.913",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "7229b336-8442-400a-adba-5674b2e86c5a",
+          "Name": "Tool"
+        },
+        {
+          "Id": "310eba46-9738-4ff8-a6df-9c7da7f70d6b",
+          "Name": "Mätinstrument"
+        }
+      ],
+      "Id": "4045D12BA",
+      "Name": "Sågmall",
+      "Description": "",
+      "Added": "2016-08-09T21:19:11.337",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "7229b336-8442-400a-adba-5674b2e86c5a",
+          "Name": "Tool"
+        }
+      ],
+      "Id": "425E8C47",
+      "Name": "Metal ruler",
+      "Description": "",
+      "Added": "2016-08-09T19:55:27.46",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "7229b336-8442-400a-adba-5674b2e86c5a",
+          "Name": "Tool"
+        }
+      ],
+      "Id": "515E60CF",
+      "Name": "Extra large clamp",
+      "Description": "",
+      "Added": "2016-08-09T20:21:02.31",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "fcd76036-67d2-41b8-9d7e-b9228927df99",
+          "Name": "Material"
+        }
+      ],
+      "Id": "5410329410506",
+      "Name": "plastlåda med krympslang och popnitar",
+      "Description": "innehåller \r\nnågra mindre krympslangar och popnitar.",
+      "Added": "2016-08-09T21:00:09.073",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "7229b336-8442-400a-adba-5674b2e86c5a",
+          "Name": "Tool"
+        }
+      ],
+      "Id": "5BC2291E",
+      "Name": "Mätt grunka",
+      "Description": "mins inte vafan den heter... sån där saker jag köpte för att kunna hyvla ner trä bitar nog för att börja svarva.",
+      "Added": "2016-08-09T20:35:02.317",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "fcd76036-67d2-41b8-9d7e-b9228927df99",
+          "Name": "Material"
+        }
+      ],
+      "Id": "5EE35185",
+      "Name": "Bivax",
+      "Description": "",
+      "Added": "2016-08-09T21:27:43.22",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "fcd76036-67d2-41b8-9d7e-b9228927df99",
+          "Name": "Material"
+        }
+      ],
+      "Id": "63CB6354",
+      "Name": "Ståltråd",
+      "Description": "",
+      "Added": "2016-08-09T21:21:14.557",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "9d20d727-f77f-4aca-ac34-27856a6097d8",
+          "Name": "Adhesive"
+        },
+        {
+          "Id": "fcd76036-67d2-41b8-9d7e-b9228927df99",
+          "Name": "Material"
+        }
+      ],
+      "Id": "7311980100172",
+      "Name": "750ml cascol Woodglue",
+      "Description": "",
+      "Added": "2016-08-09T20:12:37.057",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "7229b336-8442-400a-adba-5674b2e86c5a",
+          "Name": "Tool"
+        }
+      ],
+      "Id": "7330571072827",
+      "Name": "Extra large clamp",
+      "Description": "",
+      "Added": "2016-08-09T20:02:44.167",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "fcd76036-67d2-41b8-9d7e-b9228927df99",
+          "Name": "Material"
+        }
+      ],
+      "Id": "7393173097988",
+      "Name": "plast låda med krympslang i",
+      "Description": "",
+      "Added": "2016-08-09T21:10:54.787",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "9e841d64-9580-41f6-b101-b7ade2060061",
+          "Name": "Filler Material"
+        },
+        {
+          "Id": "fcd76036-67d2-41b8-9d7e-b9228927df99",
+          "Name": "Material"
+        }
+      ],
+      "Id": "7393173225121",
+      "Name": "carpentry plaster",
+      "Description": "",
+      "Added": "2016-08-09T20:53:21.327",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "7229b336-8442-400a-adba-5674b2e86c5a",
+          "Name": "Tool"
+        }
+      ],
+      "Id": "79746FC6",
+      "Name": "Round rasp",
+      "Description": "",
+      "Added": "2016-08-09T21:37:30.99",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "bbdb36c9-63e8-4d11-a8dc-4a2d682b0ded",
+          "Name": "Cutting Tool"
+        },
+        {
+          "Id": "7229b336-8442-400a-adba-5674b2e86c5a",
+          "Name": "Tool"
+        }
+      ],
+      "Id": "7D4E3DF6",
+      "Name": "Japanese Carpentry Saw",
+      "Description": "",
+      "Added": "2016-08-09T20:17:53.217",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "7229b336-8442-400a-adba-5674b2e86c5a",
+          "Name": "Tool"
+        }
+      ],
+      "Id": "8637102B",
+      "Name": "Ethernet Crymplare",
+      "Description": "Ethernet Crymping tänger",
+      "Added": "2016-08-09T20:38:55.467",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "bbdb36c9-63e8-4d11-a8dc-4a2d682b0ded",
+          "Name": "Cutting Tool"
+        },
+        {
+          "Id": "7229b336-8442-400a-adba-5674b2e86c5a",
+          "Name": "Tool"
+        }
+      ],
+      "Id": "88E13BAD",
+      "Name": "Serated kevlar sicsors",
+      "Description": "",
+      "Added": "2016-08-09T20:48:15.56",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "7229b336-8442-400a-adba-5674b2e86c5a",
+          "Name": "Tool"
+        }
+      ],
+      "Id": "95827A66",
+      "Name": "25mm wood Chisel   ",
+      "Description": "",
+      "Added": "2016-08-09T20:00:12.853",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "7229b336-8442-400a-adba-5674b2e86c5a",
+          "Name": "Tool"
+        }
+      ],
+      "Id": "B0DAD272",
+      "Name": "Normal sized wood clamp damaged",
+      "Description": "",
+      "Added": "2016-08-09T20:52:11.133",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "fcd76036-67d2-41b8-9d7e-b9228927df99",
+          "Name": "Material"
+        }
+      ],
+      "Id": "BCF3FE68",
+      "Name": "plast låda med hantag med öljetter och popnitar",
+      "Description": "",
+      "Added": "2016-08-09T21:39:51.2",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "7229b336-8442-400a-adba-5674b2e86c5a",
+          "Name": "Tool"
+        }
+      ],
+      "Id": "EA4DAAC2",
+      "Name": "Såg",
+      "Description": "",
+      "Added": "2016-08-09T21:42:59.207",
+      "ContainerId": "08AAB9B7"
+    },
+    {
+      "Tags": [
+        {
+          "Id": "fcd76036-67d2-41b8-9d7e-b9228927df99",
+          "Name": "Material"
+        }
+      ],
+      "Id": "FDE31C07",
+      "Name": "Perforerat stålband",
+      "Description": "",
+      "Added": "2016-08-09T21:09:18.817",
+      "ContainerId": "08AAB9B7"
+    }
+  ],
+  "Id": "08AAB9B7",
+  "Name": "Transparant plastic Tub",
+  "Description": "a transparant plastic tub",
+  "Added": "2016-08-09T19:53:45.477",
+  "ContainerId": null
+}

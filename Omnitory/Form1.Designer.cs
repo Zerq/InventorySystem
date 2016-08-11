@@ -40,8 +40,9 @@
             this.addItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -150,14 +151,18 @@
             // 
             // ItemListView
             // 
+            this.ItemListView.Alignment = System.Windows.Forms.ListViewAlignment.SnapToGrid;
+            this.ItemListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2});
             this.ItemListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ItemListView.GridLines = true;
             this.ItemListView.Location = new System.Drawing.Point(3, 30);
             this.ItemListView.Name = "ItemListView";
             this.ItemListView.Size = new System.Drawing.Size(808, 310);
             this.ItemListView.SmallImageList = this.imageList1;
             this.ItemListView.TabIndex = 0;
             this.ItemListView.UseCompatibleStateImageBehavior = false;
-            this.ItemListView.View = System.Windows.Forms.View.SmallIcon;
+            this.ItemListView.View = System.Windows.Forms.View.List;
             this.ItemListView.SelectedIndexChanged += new System.EventHandler(this.ItemListView_SelectedIndexChanged);
             this.ItemListView.DoubleClick += new System.EventHandler(this.ItemListView_DoubleClick);
             // 
@@ -197,6 +202,12 @@
             this.deleteItemToolStripMenuItem.Text = "Delete";
             this.deleteItemToolStripMenuItem.Click += new System.EventHandler(this.deleteItemToolStripMenuItem_Click);
             // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox1.Leave += new System.EventHandler(this.toolStripTextBox1_Leave);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 369);
@@ -205,11 +216,9 @@
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "Tags";
             // 
-            // toolStripTextBox1
+            // columnHeader2
             // 
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
-            this.toolStripTextBox1.Leave += new System.EventHandler(this.toolStripTextBox1_Leave);
+            this.columnHeader2.Width = 300;
             // 
             // Form1
             // 
@@ -220,6 +229,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -254,6 +264,7 @@
         private System.Windows.Forms.ListView taglistView;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }
 

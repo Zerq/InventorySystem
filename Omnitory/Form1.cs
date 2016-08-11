@@ -8,12 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NHttp;
+using Newtonsoft.Json;
+using Omnitory.Model;
+using System.Linq.Expressions;
 
 namespace Omnitory {
     public partial class Form1 : Form {
         public Form1() {
             InitializeComponent();
+            Filter = n => true;
         }
+ 
         public Model.Container CurrentContainer;
         private void RenderTagList() {
             taglistView.Items.Clear();
@@ -28,12 +34,12 @@ namespace Omnitory {
             List<Model.Item> items;
 
             if (CurrentContainer == null) {
-                continers = Db.Context.Containers.Where(n => n.Container == null).ToList();
-                items = Db.Context.Items.Where(n => n.Container == null).ToList().Where(n => !(n is Model.Container)).ToList();
+                continers = Db.Context.Containers.OrderBy(n => n.Name).Where(n => n.Container == null).ToList();
+                items = Db.Context.Items.OrderBy(n=> n.Name).Where(n => n.Container == null).Where(Filter).ToList().Where(n => !(n is Model.Container)).ToList();
             } else {
-                var x = Db.Context.Items.Where(n => n.Container.Id == CurrentContainer.Id).ToList();
-                continers = Db.Context.Containers.Where(n => n.Container.Id == CurrentContainer.Id).ToList();
-                items = Db.Context.Items.Where(n => n.Container.Id == CurrentContainer.Id).ToList().Where(n => !(n is Model.Container)).ToList();
+            
+                continers = Db.Context.Containers.OrderBy(n => n.Name).Where(n => n.Container.Id == CurrentContainer.Id).ToList();
+                items = Db.Context.Items.OrderBy(n => n.Name).Where(n => n.Container.Id == CurrentContainer.Id).ToList().Where(n => !(n is Model.Container)).ToList();
             }
 
 
@@ -48,9 +54,59 @@ namespace Omnitory {
                 ItemListView.Items.Add(new SpecialListViewItem<Model.Item>(item) { ImageIndex = 0});
             }
         }
+
+        NHttp.HttpServer server;
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e) {
+            server.Stop();
+            server.Dispose();
+        }
         private void Form1_Load(object sender, EventArgs e) {
             RenderTagList();
             RenderItemList();
+            server = new NHttp.HttpServer();
+            server.EndPoint.Port = 7331;
+            server.RequestReceived += requestRecived;
+            server.Start();
+        }
+
+        private void WriteToOutput(string text, HttpRequestEventArgs e) {
+            var bytes = System.Text.Encoding.UTF8.GetBytes(text);
+            e.Response.ContentType = "text/plain";
+            e.Response.OutputStream.Write(bytes, 0, bytes.Count());
+        }
+        private void GetMethod(HttpRequestEventArgs e) {
+            if (e.Request.QueryString.AllKeys.Contains("id")) {
+                var id = e.Request.QueryString["id"];
+                var item = DAL.Db.Context.Items.FirstOrDefault(n => n.Id == id);
+                if (item != null) {
+                    var itemText = JsonConvert.SerializeObject(item);
+                    e.Response.ContentType = "application/json";
+                    WriteToOutput(itemText, e);         
+                }
+            }
+        }
+        private void AddToContainer(HttpRequestEventArgs e) {
+            if (e.Request.QueryString.AllKeys.Contains("containerId") && e.Request.QueryString.AllKeys.Contains("itemId")) {
+                try {
+                    var containerId = e.Request.QueryString["containerId"];
+                    var itemId = e.Request.QueryString["itemId"];
+                    var item = DAL.Db.Context.Items.FirstOrDefault(n => n.Id == itemId);
+                    if (item != null) {
+                        item.ContainerId = containerId;
+                        DAL.Db.Context.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                        DAL.Db.Context.SaveChanges();
+                        WriteToOutput(true.ToString(), e);
+                    } else {
+                        WriteToOutput(false.ToString(), e);
+                    }
+                } catch (Exception) {
+                    WriteToOutput(false.ToString(), e);
+                }
+            }
+        }
+        private void requestRecived(object sender, HttpRequestEventArgs e) {
+            GetMethod(e);
+            AddToContainer(e);
         }
 
         public class SpecialListViewItem<T> : ListViewItem {
@@ -146,6 +202,9 @@ namespace Omnitory {
         AddItem AddItemdialog = new AddItem();
         private void AddToContainer(Model.Item AddItemdialog) {
             if (CurrentContainer != null) {
+                if (CurrentContainer.Items == null) {
+                    CurrentContainer.Items = new List<Model.Item>();
+                }
                 CurrentContainer.Items.Add(AddItemdialog);
                 Db.Context.Entry(CurrentContainer).State = System.Data.Entity.EntityState.Modified;
                 RenderItemList();
@@ -232,17 +291,22 @@ namespace Omnitory {
         }
         EditItem editItemDialog = new EditItem();
 
-        private void EditItem(SpecialListViewItem<Model.Item> special, Model.Item item = null) {
-            var item_ = ItemListView.SelectedItems[0] as SpecialListViewItem<Model.Item>;
-            var container_ = ItemListView.SelectedItems[0] as SpecialListViewItem<Model.Container>;
+        public Expression<Func<Item, bool>> Filter { get; private set; }
 
-            if (item_ != null) {
-                editItemDialog.Item = item_.Special;
-            }
-            if (container_ != null) {
-                editItemDialog.Item = container_.Special;
-            }
+        private void EditItem(Model.Item item = null) {
+            if (item == null) {
+                var item_ = ItemListView.SelectedItems[0] as SpecialListViewItem<Model.Item>;
+                var container_ = ItemListView.SelectedItems[0] as SpecialListViewItem<Model.Container>;
 
+                if (item_ != null) {
+                    editItemDialog.Item = item_.Special;
+                }
+                if (container_ != null) {
+                    editItemDialog.Item = container_.Special;
+                }
+            } else {
+                editItemDialog.Item = item;
+            }
             if (editItemDialog.ShowDialog() == DialogResult.OK) {
                 Db.Context.Entry(editItemDialog.Item).State = System.Data.Entity.EntityState.Modified;
                 Db.Context.SaveChanges();
@@ -253,8 +317,9 @@ namespace Omnitory {
         private void editItemToolStripMenuItem_Click(object sender, EventArgs e) {
             if (ItemListView.SelectedItems.Count > 0) {
 
+                EditItem();
 
-            
+
             }
         }
 
@@ -264,11 +329,17 @@ namespace Omnitory {
                 if (item is Model.Container) {
                     CurrentContainer = item as Model.Container;
                     RenderItemList();
+                    toolStripTextBox1.Text = "";
                 } else {
                     editItemDialog.Item = item;
-
+                    if (editItemDialog.ShowDialog() == DialogResult.OK) {
+                        EditItem(editItemDialog.Item);
+                    }
+                    toolStripTextBox1.Text = "";
                 }
             }
         }
+
+  
     }
 }
