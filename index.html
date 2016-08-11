@@ -22,18 +22,19 @@
       <h1>
 <a id="omnicatz-inventory-system" class="anchor" href="#omnicatz-inventory-system" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Omnicatz Inventory System</h1>
 
-<p>A simple system using a standard barcode scanner and dymo labelmanager to keep a database of for tracking object and containers.
-The idea is to only track where an item was last so there is no item removal action other then total remove from the system.</p>
+<p>A simple system using a standard barcode scanner and dymo labelmanager to keep a database of for tracking object and containers.</p>
+
+<p>The idea is to only track where an item was last... One never actually track when one remove an item unless it purged totally from the system.</p>
 
 <p><a href="https://www.amazon.com/DYMO-LabelManager-Label-Maker-1768960/dp/B00464E5P2">Label Printer</a></p>
 
 <p><a href="http://www.aliexpress.com/item/USB-Negative-film-scanner-portable-barcode-scanner-scaner-barcode-reader-Bar-Code-scanner-leitor-de-codigo/32452127851.html?spm=2114.13010608.0.96.dNMKfI">Barcode scanner</a></p>
 
-<p>Additionally i am working on a Phone app mostly for adding things to boxes without having to use the pc... (the PC app will run in tray and function as a server communicating with the phone app..)
-I also plan on allowing for printing of labels with regular printer and to make the phone app function as a substitute for the barcode scanner later on.</p>
+<p>Additionally I am working on a Phone app mostly for simpler operations like moving items that already exist to another container also I want to add functionality so it can substitute the barcode scanner. </p>
 
-<p>I am using a truncated Guid right now for the PC app since i want to limit label size to save money  (label tape does cost a bunch even if most product already come with a label) I do this by checking the database for duplicate of the limited guid and repeating if it fails.
-(If one later uses method of printing Barcode or QR code on a regular printer and using the phone to scan then this will also function quite well as the database itself is not as picky about Id size)</p>
+<p>To do this I am integrating a http server with the PC app so it serves as a server probably running in the tray later on and with an option to launch on start.</p>
+
+<p>I am also planing on a low budget option of pre-printing barcodes using a regular printer where by one would print a whole bunch of them at a time then cut them out as needed and glue them on.</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/Zerq/InventorySystem">Omnicatz Inventory system</a> is maintained by <a href="https://github.com/Zerq">Zerq</a>.</span>
