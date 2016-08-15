@@ -5,22 +5,25 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Omnitory {
     public partial class AddItem : Form {
-        public AddItem() {
+        public AddItem(ImageList list) {
             InitializeComponent();
+            imageList = list;
         }
 
-
+        public ImageList imageList { get; set; }
         private void RenderCombo() {
       
                 tagCombo.Items.Clear();
-            Db.Context.Tags.ToList().ForEach(n => tagCombo.Items.Add(n));
+            Db.Context.Tags.OrderBy(n=> n.Name).ToList().ForEach(n => tagCombo.Items.Add(n));
           
         }
 
@@ -57,24 +60,23 @@ namespace Omnitory {
                 DialogResult = DialogResult.OK;
                     //select this item and exit dialog
                 } else {
-                    // reveal add item ui
-                    this.Size = new Size(355, 417);
-                }
+                // reveal add item ui
+                this.Size = new Size(413, 425);
+
+
+            }
         
         }
 
         private void AddItem_Shown(object sender, EventArgs e) {
-            this.Size = new Size(355, 123);
+            this.Size = new Size(329, 122);
             RenderCombo();
             Result = null;
-
             barcode.Text = "";
-             nameBox.Text = "";
-             descriptionBox.Text = "";
-       
-                 taglistBox.Items.Clear();
+            nameBox.Text = "";
+            descriptionBox.Text = "";       
+            taglistBox.Items.Clear();
             barcode.Focus();
-
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e) {
@@ -139,5 +141,17 @@ namespace Omnitory {
             label.Print(printer);
            
         }
+        Browser browserDialog = new Browser();
+        private void button4_Click(object sender, EventArgs e) {
+
+            browserDialog.SaveTumb(barcode.Text, imageList);
+         
+        }
+
+        private bool callbackAbort() {
+            throw new NotImplementedException();
+        }
+
+   
     }
 }

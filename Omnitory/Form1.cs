@@ -12,18 +12,31 @@ using NHttp;
 using Newtonsoft.Json;
 using Omnitory.Model;
 using System.Linq.Expressions;
+using System.Data.SqlClient;
+using System.IO;
 
 namespace Omnitory {
     public partial class Form1 : Form {
         public Form1() {
             InitializeComponent();
             Filter = n => true;
+            AddItemdialog = new AddItem(imageList1);
+            editItemDialog = new EditItem(imageList1);
+            var path = $"{AppDomain.CurrentDomain.BaseDirectory}Images/";
+            DirectoryInfo dir = new DirectoryInfo(path);
+            var files = dir.GetFiles("*.png");
+            foreach (var file in files) {
+                var key = file.Name.Replace(file.Extension, "");
+                imageList1.Images.Add(key, Image.FromFile(file.FullName));
+            } 
+
         }
- 
+        EditItem editItemDialog;
+        AddItem AddItemdialog;
         public Model.Container CurrentContainer;
         private void RenderTagList() {
             taglistView.Items.Clear();
-            var list = Db.Context.Tags.ToList().Select(n => new SpecialListViewItem<Model.Tag>(n) { ImageIndex = 1 }).ToArray();
+            var list = Db.Context.Tags.OrderBy(n=> n.Name).ToList().Select(n => new SpecialListViewItem<Model.Tag>(n) { ImageIndex = 1 }).ToArray();
             taglistView.Items.Clear();
             taglistView.Items.AddRange(list);
 
@@ -43,15 +56,20 @@ namespace Omnitory {
             }
 
 
+      
             ItemListView.Items.Clear();
             if (CurrentContainer != null) {
-                ItemListView.Items.Add(new SpecialListViewItem<Model.Container>(CurrentContainer.Container) { Text = "..", ImageIndex = 1 });
+                ItemListView.Items.Add(new SpecialListViewItem<Model.Container>(CurrentContainer.Container) { Text = "..", ImageKey= "_folder" });
             }
-            foreach (var container in continers) {
-                ItemListView.Items.Add(new SpecialListViewItem<Model.Container>(container) { ImageIndex = 1 });
+            foreach (var container in continers) { 
+                ItemListView.Items.Add(new SpecialListViewItem<Model.Container>(container) { Special= container, ImageKey = "_folder" });
             }
             foreach (var item in items) {
-                ItemListView.Items.Add(new SpecialListViewItem<Model.Item>(item) { ImageIndex = 0});
+                if (File.Exists($@"{AppDomain.CurrentDomain.BaseDirectory}Images\{item.Id}.png")) {
+                    ItemListView.Items.Add(new SpecialListViewItem<Model.Item>(item) {  Special = item,  ImageKey=item.Id });
+                } else {
+                    ItemListView.Items.Add(new SpecialListViewItem<Model.Item>(item) { Special = item, ImageKey = "_file" });
+                }            
             }
         }
 
@@ -199,7 +217,7 @@ namespace Omnitory {
                 }
             }
         }
-        AddItem AddItemdialog = new AddItem();
+      
         private void AddToContainer(Model.Item AddItemdialog) {
             if (CurrentContainer != null) {
                 if (CurrentContainer.Items == null) {
@@ -289,7 +307,7 @@ namespace Omnitory {
                 }
             }
         }
-        EditItem editItemDialog = new EditItem();
+
 
         public Expression<Func<Item, bool>> Filter { get; private set; }
 
@@ -310,8 +328,69 @@ namespace Omnitory {
             if (editItemDialog.ShowDialog() == DialogResult.OK) {
                 Db.Context.Entry(editItemDialog.Item).State = System.Data.Entity.EntityState.Modified;
                 Db.Context.SaveChanges();
+
+                if (editItemDialog.IsContainer.Checked) {
+                    MakeContainer(editItemDialog.Item);
+                } else {
+                    MakeItem(editItemDialog.Item);
+                }
+
+
                 RenderItemList();
             }
+        }
+
+        private int? CountContainers(Item item, IDbConnection connection) {
+            var command = connection.CreateCommand();
+            command.CommandText = @"select count(id) from Containers where id = @id";
+            var parameter = command.CreateParameter();
+            parameter.ParameterName = "@id";
+            parameter.Value = item.Id;
+            command.Parameters.Add(parameter);
+            return command.ExecuteScalar() as int?;
+        }
+        private void MakeItem(Item item) {
+            using (IDbConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString)) {
+                connection.Open();
+                var count = CountContainers(item, connection);
+                if (count.HasValue) {
+                    if (count == 1) {
+                        DeleteContainerPart(item, connection);
+                    }
+                }
+            }
+        }
+
+        private void DeleteContainerPart(Item item, IDbConnection connection) {
+            var command = connection.CreateCommand();
+            command.CommandText = @"Delete from Containers where id = @id";
+            var parameter = command.CreateParameter();
+            parameter.ParameterName = "@id";
+            parameter.Value = item.Id;
+            command.Parameters.Add(parameter);
+            command.ExecuteNonQuery();
+        }
+
+        private void MakeContainer(Item item) {
+            using (IDbConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString)) {
+                connection.Open();
+                var count = CountContainers(item, connection);
+                if (count.HasValue) {
+                    if (count == 0) {
+                       CreateContainerPart(item, connection);
+                    }
+                }
+            }
+        }
+
+        private void CreateContainerPart(Item item, IDbConnection connection) {
+            var command = connection.CreateCommand();
+            command.CommandText = @"Insert into Containers (id) values (@id)";
+            var parameter = command.CreateParameter();
+            parameter.ParameterName = "@id";
+            parameter.Value = item.Id;
+            command.Parameters.Add(parameter);
+            command.ExecuteNonQuery();
         }
 
         private void editItemToolStripMenuItem_Click(object sender, EventArgs e) {

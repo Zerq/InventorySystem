@@ -42,6 +42,7 @@
             this.Newtagbutton = new System.Windows.Forms.Button();
             this.removeButton = new System.Windows.Forms.Button();
             this.isContainer = new System.Windows.Forms.CheckBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,9 +76,9 @@
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 376);
+            this.panel3.Location = new System.Drawing.Point(0, 389);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(349, 10);
+            this.panel3.Size = new System.Drawing.Size(447, 10);
             this.panel3.TabIndex = 8;
             // 
             // panel1
@@ -87,15 +88,15 @@
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 347);
+            this.panel1.Location = new System.Drawing.Point(0, 360);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(349, 29);
+            this.panel1.Size = new System.Drawing.Size(447, 29);
             this.panel1.TabIndex = 9;
             // 
             // button2
             // 
             this.button2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button2.Location = new System.Drawing.Point(198, 0);
+            this.button2.Location = new System.Drawing.Point(296, 0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(45, 29);
             this.button2.TabIndex = 5;
@@ -106,7 +107,7 @@
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(243, 0);
+            this.panel2.Location = new System.Drawing.Point(341, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(15, 29);
             this.panel2.TabIndex = 6;
@@ -114,7 +115,7 @@
             // button3
             // 
             this.button3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button3.Location = new System.Drawing.Point(258, 0);
+            this.button3.Location = new System.Drawing.Point(356, 0);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(78, 29);
             this.button3.TabIndex = 4;
@@ -125,7 +126,7 @@
             // panel4
             // 
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(336, 0);
+            this.panel4.Location = new System.Drawing.Point(434, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(13, 29);
             this.panel4.TabIndex = 7;
@@ -134,7 +135,7 @@
             // 
             this.nameBox.Location = new System.Drawing.Point(79, 47);
             this.nameBox.Name = "nameBox";
-            this.nameBox.Size = new System.Drawing.Size(228, 20);
+            this.nameBox.Size = new System.Drawing.Size(305, 20);
             this.nameBox.TabIndex = 11;
             // 
             // label2
@@ -151,7 +152,7 @@
             this.descriptionBox.Location = new System.Drawing.Point(79, 73);
             this.descriptionBox.Multiline = true;
             this.descriptionBox.Name = "descriptionBox";
-            this.descriptionBox.Size = new System.Drawing.Size(228, 63);
+            this.descriptionBox.Size = new System.Drawing.Size(305, 63);
             this.descriptionBox.TabIndex = 13;
             // 
             // label3
@@ -177,7 +178,7 @@
             this.taglistBox.FormattingEnabled = true;
             this.taglistBox.Location = new System.Drawing.Point(79, 173);
             this.taglistBox.Name = "taglistBox";
-            this.taglistBox.Size = new System.Drawing.Size(228, 134);
+            this.taglistBox.Size = new System.Drawing.Size(305, 134);
             this.taglistBox.TabIndex = 15;
             this.taglistBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -186,7 +187,7 @@
             this.tagCombo.FormattingEnabled = true;
             this.tagCombo.Location = new System.Drawing.Point(80, 146);
             this.tagCombo.Name = "tagCombo";
-            this.tagCombo.Size = new System.Drawing.Size(227, 21);
+            this.tagCombo.Size = new System.Drawing.Size(304, 21);
             this.tagCombo.TabIndex = 16;
             // 
             // Newtagbutton
@@ -220,11 +221,22 @@
             this.isContainer.Text = "Is Container";
             this.isContainer.UseVisualStyleBackColor = true;
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(318, 8);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(74, 23);
+            this.button4.TabIndex = 23;
+            this.button4.Text = "Browse";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // AddItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 386);
+            this.ClientSize = new System.Drawing.Size(447, 399);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.isContainer);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
@@ -272,5 +284,6 @@
         private System.Windows.Forms.Button Newtagbutton;
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.CheckBox isContainer;
+        private System.Windows.Forms.Button button4;
     }
 }

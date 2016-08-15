@@ -5,16 +5,20 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Omnitory {
     public partial class EditItem : Form {
-        public EditItem() {
+        public EditItem(ImageList list) {
             InitializeComponent();
+            imageList = list;
         }
+        public ImageList imageList { get; private set; }
         public Model.Item Item { get; set; }
         private void EditItem_Load(object sender, EventArgs e) {
 
@@ -22,7 +26,7 @@ namespace Omnitory {
         private void RenderCombo() {
 
             tagCombo.Items.Clear();
-            Db.Context.Tags.ToList().ForEach(n => tagCombo.Items.Add(n));
+            Db.Context.Tags.OrderBy(n=> n.Name).ToList().ForEach(n => tagCombo.Items.Add(n));
 
         }
         private void EditItem_Shown(object sender, EventArgs e) {
@@ -30,6 +34,7 @@ namespace Omnitory {
             this.descriptionBox.Text = Item.Description;
             this.taglistBox.Items.Clear();
             this.taglistBox.Items.AddRange(Item.Tags.ToArray());
+            this.IsContainer.Checked = Item is Model.Container;
             RenderCombo();
             nameBox.Focus();
 
@@ -80,6 +85,14 @@ namespace Omnitory {
 
         private void tagCombo_SelectedIndexChanged(object sender, EventArgs e) {
 
+        }
+        Browser browserDialog = new Browser();
+        private void button1_Click(object sender, EventArgs e) {
+            browserDialog.SaveTumb(Item.Id, imageList); 
+        }
+
+        private bool callbackAbort() {
+            throw new NotImplementedException();
         }
     }
 }
