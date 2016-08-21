@@ -40,9 +40,10 @@
             this.nameBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.editItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.IsContainer = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.editItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editItemBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -187,17 +188,13 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(190, 274);
+            this.button4.Location = new System.Drawing.Point(207, 274);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(110, 23);
+            this.button4.Size = new System.Drawing.Size(93, 23);
             this.button4.TabIndex = 38;
             this.button4.Text = "Print id barcode";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // editItemBindingSource
-            // 
-            this.editItemBindingSource.DataSource = typeof(Omnitory.EditItem);
             // 
             // IsContainer
             // 
@@ -208,22 +205,38 @@
             this.IsContainer.TabIndex = 39;
             this.IsContainer.Text = "Is Container";
             this.IsContainer.UseVisualStyleBackColor = true;
+            this.IsContainer.CheckStateChanged += new System.EventHandler(this.IsContainer_CheckStateChanged);
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(98, 274);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(86, 23);
+            this.button1.Size = new System.Drawing.Size(55, 23);
             this.button1.TabIndex = 40;
             this.button1.Text = "Browse";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(159, 274);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(41, 23);
+            this.button5.TabIndex = 41;
+            this.button5.Text = "Color";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // editItemBindingSource
+            // 
+            this.editItemBindingSource.DataSource = typeof(Omnitory.EditItem);
             // 
             // EditItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(313, 342);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.IsContainer);
             this.Controls.Add(this.button4);
@@ -270,5 +283,6 @@
         private System.Windows.Forms.BindingSource editItemBindingSource;
         public System.Windows.Forms.CheckBox IsContainer;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button5;
     }
 }

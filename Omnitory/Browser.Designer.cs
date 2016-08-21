@@ -25,13 +25,13 @@
         private void InitializeComponent() {
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.back = new System.Windows.Forms.ToolStripMenuItem();
             this.forward = new System.Windows.Forms.ToolStripMenuItem();
             this.navbox = new System.Windows.Forms.ToolStripTextBox();
             this.GoTo = new System.Windows.Forms.ToolStripMenuItem();
             this.SelectOk = new System.Windows.Forms.ToolStripMenuItem();
             this.cansleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,16 +57,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(608, 27);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 27);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(608, 265);
-            this.webBrowser1.TabIndex = 2;
-            this.webBrowser1.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser1_Navigated);
             // 
             // back
             // 
@@ -107,6 +97,17 @@
             this.cansleToolStripMenuItem.Size = new System.Drawing.Size(54, 23);
             this.cansleToolStripMenuItem.Text = "Cansle";
             this.cansleToolStripMenuItem.Click += new System.EventHandler(this.cansleToolStripMenuItem_Click);
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(0, 27);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.ScriptErrorsSuppressed = true;
+            this.webBrowser1.Size = new System.Drawing.Size(608, 265);
+            this.webBrowser1.TabIndex = 2;
+            this.webBrowser1.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser1_Navigated);
             // 
             // Browser
             // 

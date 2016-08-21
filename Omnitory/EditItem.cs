@@ -94,5 +94,26 @@ namespace Omnitory {
         private bool callbackAbort() {
             throw new NotImplementedException();
         }
+        ColorDialog colorDialog = new ColorDialog();
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                System.Drawing.Image bmp = new Bitmap(32, 32);
+                using (Graphics g = Graphics.FromImage(bmp))
+                {
+                    g.FillRectangle(new SolidBrush(colorDialog.Color), new Rectangle(0, 0, 32, 32));
+                }
+                var image = bmp.GetThumbnailImage(32, 32, callbackAbort, IntPtr.Zero);
+                image.Save($"{AppDomain.CurrentDomain.BaseDirectory}Images/{Item.Id}.png", ImageFormat.Png);
+                imageList.Images.RemoveByKey(Item.Id);
+                imageList.Images.Add(Item.Id,image);
+            }
+        }
+
+        private void IsContainer_CheckStateChanged(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

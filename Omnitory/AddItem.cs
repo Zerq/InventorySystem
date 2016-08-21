@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -151,7 +152,25 @@ namespace Omnitory {
         private bool callbackAbort() {
             throw new NotImplementedException();
         }
-
-   
+        ColorDialog colorDialog = new ColorDialog();
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var path = $"{AppDomain.CurrentDomain.BaseDirectory}Images/{barcode}.png";
+            if (File.Exists(path)) {
+                Bitmap bmp = new Bitmap( Image.FromFile(path));
+               colorDialog.Color =  bmp.GetPixel(0, 0);
+            }
+            if (colorDialog.ShowDialog() == DialogResult.OK) {
+                System.Drawing.Image bmp = new Bitmap(32,32);
+                using (Graphics g = Graphics.FromImage(bmp)) {
+                    g.FillRectangle( new SolidBrush(colorDialog.Color), new Rectangle(0, 0, 32, 32));
+                }
+                var image = bmp.GetThumbnailImage(32, 32, callbackAbort, IntPtr.Zero);
+                image.Save(path, ImageFormat.Png);
+                imageList.Images.RemoveByKey(barcode.Text);
+                imageList.Images.Add(barcode.Text, image);
+            }
+      
+        }
     }
 }
