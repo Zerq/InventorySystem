@@ -40,9 +40,9 @@
             this.nameBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.editItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.IsContainer = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.editItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editItemBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -142,6 +142,7 @@
             this.taglistBox.Name = "taglistBox";
             this.taglistBox.Size = new System.Drawing.Size(228, 134);
             this.taglistBox.TabIndex = 33;
+            this.taglistBox.SelectedIndexChanged += new System.EventHandler(this.taglistBox_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -195,10 +196,6 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // editItemBindingSource
-            // 
-            this.editItemBindingSource.DataSource = typeof(Omnitory.EditItem);
-            // 
             // IsContainer
             // 
             this.IsContainer.AutoSize = true;
@@ -218,6 +215,10 @@
             this.button1.Text = "Browse";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // editItemBindingSource
+            // 
+            this.editItemBindingSource.DataSource = typeof(Omnitory.EditItem);
             // 
             // EditItem
             // 

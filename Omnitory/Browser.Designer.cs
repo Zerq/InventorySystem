@@ -23,16 +23,20 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.back = new System.Windows.Forms.ToolStripMenuItem();
             this.forward = new System.Windows.Forms.ToolStripMenuItem();
             this.navbox = new System.Windows.Forms.ToolStripTextBox();
             this.GoTo = new System.Windows.Forms.ToolStripMenuItem();
             this.SelectOk = new System.Windows.Forms.ToolStripMenuItem();
             this.cansleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.getUrlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -57,16 +61,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(608, 27);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 27);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(608, 265);
-            this.webBrowser1.TabIndex = 2;
-            this.webBrowser1.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser1_Navigated);
             // 
             // back
             // 
@@ -108,6 +102,36 @@
             this.cansleToolStripMenuItem.Text = "Cansle";
             this.cansleToolStripMenuItem.Click += new System.EventHandler(this.cansleToolStripMenuItem_Click);
             // 
+            // webBrowser1
+            // 
+            this.webBrowser1.ContextMenuStrip = this.contextMenuStrip1;
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.IsWebBrowserContextMenuEnabled = false;
+            this.webBrowser1.Location = new System.Drawing.Point(0, 27);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.ScriptErrorsSuppressed = true;
+            this.webBrowser1.Size = new System.Drawing.Size(608, 265);
+            this.webBrowser1.TabIndex = 2;
+            this.webBrowser1.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser1_Navigated);
+            this.webBrowser1.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.webBrowser1_Navigating);
+            this.webBrowser1.NewWindow += new System.ComponentModel.CancelEventHandler(this.webBrowser1_NewWindow);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.getUrlToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(111, 26);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // getUrlToolStripMenuItem
+            // 
+            this.getUrlToolStripMenuItem.Name = "getUrlToolStripMenuItem";
+            this.getUrlToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.getUrlToolStripMenuItem.Text = "Get Url";
+            this.getUrlToolStripMenuItem.Click += new System.EventHandler(this.getUrlToolStripMenuItem_Click);
+            // 
             // Browser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -123,6 +147,7 @@
             this.Shown += new System.EventHandler(this.Browser_Shown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,5 +164,7 @@
         private System.Windows.Forms.ToolStripMenuItem GoTo;
         private System.Windows.Forms.ToolStripMenuItem SelectOk;
         private System.Windows.Forms.ToolStripMenuItem cansleToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem getUrlToolStripMenuItem;
     }
 }

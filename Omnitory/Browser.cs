@@ -22,6 +22,12 @@ namespace Omnitory {
 
         private void webBrowser1_Navigated(object sender, WebBrowserNavigatedEventArgs e) {
             navbox.Text = webBrowser1.Url.ToString();
+            webBrowser1.Document.MouseMove += Document_MouseMove;
+        }
+        Point mousePoint = new Point();
+        private void Document_MouseMove(object sender, HtmlElementEventArgs e) {
+            mousePoint.X = e.MousePosition.X;
+            mousePoint.Y = e.MousePosition.Y;
         }
 
         private void GoTo_Click(object sender, EventArgs e) {
@@ -93,6 +99,48 @@ namespace Omnitory {
                     }
                 }
             }
+        }
+
+        string selectedUrl = string.Empty;
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e) {
+           
+            var element = webBrowser1.Document.GetElementFromPoint(mousePoint);
+            if (element.TagName == "IMG") {
+                var source = element.GetAttribute("src");
+                var index = source.IndexOf("?");
+                if (index != -1) {
+                    source = source.Substring(0, index);
+                }
+               var format = IsImage(source);
+
+                if (format != null) {
+                    selectedUrl = source;
+                } else {
+                    e.Cancel = true;
+                }
+
+
+            } else {
+                e.Cancel = true;
+            }
+        }
+
+        private void getUrlToolStripMenuItem_Click(object sender, EventArgs e) {
+            navbox.Text = selectedUrl;
+            webBrowser1.Navigate(navbox.Text);
+        }
+
+        private void webBrowser1_NewWindow(object sender, CancelEventArgs e) {
+         //   e.Cancel = true;
+    
+            HtmlElement link = webBrowser1.Document.ActiveElement;
+           // String url = link.GetAttribute("href");
+           // webBrowser1.Navigate(url);
+
+        }
+
+        private void webBrowser1_Navigating(object sender, WebBrowserNavigatingEventArgs e) {
+            
         }
     }
 }

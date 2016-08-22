@@ -49,9 +49,10 @@ namespace Omnitory {
             if (CurrentContainer == null) {
                 continers = Db.Context.Containers.OrderBy(n => n.Name).Where(n => n.Container == null).ToList();
                 items = Db.Context.Items.OrderBy(n=> n.Name).Where(n => n.Container == null).Where(Filter).ToList().Where(n => !(n is Model.Container)).ToList();
+       
             } else {
-            
-                continers = Db.Context.Containers.OrderBy(n => n.Name).Where(n => n.Container.Id == CurrentContainer.Id).ToList();
+                Text = CurrentContainer.Name;
+           continers = Db.Context.Containers.OrderBy(n => n.Name).Where(n => n.Container.Id == CurrentContainer.Id).ToList();
                 items = Db.Context.Items.OrderBy(n => n.Name).Where(n => n.Container.Id == CurrentContainer.Id).ToList().Where(n => !(n is Model.Container)).ToList();
             }
 
@@ -61,8 +62,14 @@ namespace Omnitory {
             if (CurrentContainer != null) {
                 ItemListView.Items.Add(new SpecialListViewItem<Model.Container>(CurrentContainer.Container) { Text = "..", ImageKey= "_folder" });
             }
-            foreach (var container in continers) { 
-                ItemListView.Items.Add(new SpecialListViewItem<Model.Container>(container) { Special= container, ImageKey = "_folder" });
+            foreach (var container in continers) {
+                if (File.Exists($@"{AppDomain.CurrentDomain.BaseDirectory}Images\{container.Id}.png")) {
+
+                    ItemListView.Items.Add(new SpecialListViewItem<Model.Container>(container) { BackColor= Color.Silver,  Special = container, ImageKey = container.Id });
+                } else {
+                    ItemListView.Items.Add(new SpecialListViewItem<Model.Container>(container) { BackColor = Color.Silver, Special = container, ImageKey = "_folder" });
+
+                }
             }
             foreach (var item in items) {
                 if (File.Exists($@"{AppDomain.CurrentDomain.BaseDirectory}Images\{item.Id}.png")) {
@@ -70,6 +77,14 @@ namespace Omnitory {
                 } else {
                     ItemListView.Items.Add(new SpecialListViewItem<Model.Item>(item) { Special = item, ImageKey = "_file" });
                 }            
+            }
+
+            if (Selection.Count > 0) {
+                markSelectionToolStripMenuItem.Enabled = false;
+                moveSelectionHereToolStripMenuItem.Enabled = true;
+            } else {
+                markSelectionToolStripMenuItem.Enabled = false;
+                moveSelectionHereToolStripMenuItem.Enabled = false;
             }
         }
 
@@ -275,15 +290,21 @@ namespace Omnitory {
             }
 
         }
+  
 
         private void ItemListView_SelectedIndexChanged(object sender, EventArgs e) {
             if (ItemListView.SelectedItems.Count > 0) {
                 editItemToolStripMenuItem.Enabled = true;
                 deleteItemToolStripMenuItem.Enabled = true;
+                markSelectionToolStripMenuItem.Enabled = true;
             } else {
                 editItemToolStripMenuItem.Enabled = false;
                 deleteItemToolStripMenuItem.Enabled = false;
+                markSelectionToolStripMenuItem.Enabled = false;
             }
+
+ 
+
         }
 
         private void deleteItemToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -418,7 +439,37 @@ namespace Omnitory {
                 }
             }
         }
+        private List<string> Selection = new List<string>();
+        private void markSelectionToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (ItemListView.SelectedItems.Count > 0) {
+                Selection.Clear();
+                foreach (var x in ItemListView.SelectedItems) {
+                    var item = x as SpecialListViewItem<Model.Item>;
+                    var container = x as SpecialListViewItem<Model.Container>;
+                    if (item != null) {
+                        Selection.Add(item.Special.Id);
+                    } else
+                        if (container != null) {
+                        Selection.Add(container.Special.Id);
+                    }
+                }
+                moveSelectionHereToolStripMenuItem.Enabled = true;
+            } else {
+                moveSelectionHereToolStripMenuItem.Enabled = false;
+            }
+             
+        }
 
-  
+        private void moveSelectionHereToolStripMenuItem_Click(object sender, EventArgs e) {
+            var items = DAL.Db.Context.Items.Where(n => Selection.Contains(n.Id)).ToList();
+            items.ForEach(n => {
+                n.ContainerId = CurrentContainer?.Id ?? null;
+                DAL.Db.Context.Entry(n).State = System.Data.Entity.EntityState.Modified;
+            });
+            DAL.Db.Context.SaveChanges();
+            RenderItemList();
+            Selection.Clear();
+            moveSelectionHereToolStripMenuItem.Enabled = false;
+        }
     }
 }

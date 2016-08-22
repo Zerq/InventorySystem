@@ -94,5 +94,13 @@ namespace Omnitory {
         private bool callbackAbort() {
             throw new NotImplementedException();
         }
+
+        private void taglistBox_SelectedIndexChanged(object sender, EventArgs e) {
+            if (taglistBox.SelectedItem != null) {
+                removeButton.Enabled = true;
+            } else {
+                removeButton.Enabled = false;
+            }
+        }
     }
 }

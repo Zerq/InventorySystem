@@ -36,13 +36,15 @@
             this.deleteTagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.ItemListView = new System.Windows.Forms.ListView();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip3 = new System.Windows.Forms.MenuStrip();
             this.addItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.markSelectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.moveSelectionHereToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -59,7 +61,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(822, 369);
-            this.tabControl1.TabIndex = 0;
+            this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
@@ -166,13 +168,19 @@
             this.ItemListView.SelectedIndexChanged += new System.EventHandler(this.ItemListView_SelectedIndexChanged);
             this.ItemListView.DoubleClick += new System.EventHandler(this.ItemListView_DoubleClick);
             // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Width = 300;
+            // 
             // menuStrip3
             // 
             this.menuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addItemToolStripMenuItem,
             this.editItemToolStripMenuItem,
             this.deleteItemToolStripMenuItem,
-            this.toolStripTextBox1});
+            this.toolStripTextBox1,
+            this.markSelectionToolStripMenuItem,
+            this.moveSelectionHereToolStripMenuItem});
             this.menuStrip3.Location = new System.Drawing.Point(3, 3);
             this.menuStrip3.Name = "menuStrip3";
             this.menuStrip3.Size = new System.Drawing.Size(808, 27);
@@ -216,9 +224,21 @@
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "Tags";
             // 
-            // columnHeader2
+            // markSelectionToolStripMenuItem
             // 
-            this.columnHeader2.Width = 300;
+            this.markSelectionToolStripMenuItem.Enabled = false;
+            this.markSelectionToolStripMenuItem.Name = "markSelectionToolStripMenuItem";
+            this.markSelectionToolStripMenuItem.Size = new System.Drawing.Size(97, 23);
+            this.markSelectionToolStripMenuItem.Text = "Mark Selection";
+            this.markSelectionToolStripMenuItem.Click += new System.EventHandler(this.markSelectionToolStripMenuItem_Click);
+            // 
+            // moveSelectionHereToolStripMenuItem
+            // 
+            this.moveSelectionHereToolStripMenuItem.Enabled = false;
+            this.moveSelectionHereToolStripMenuItem.Name = "moveSelectionHereToolStripMenuItem";
+            this.moveSelectionHereToolStripMenuItem.Size = new System.Drawing.Size(126, 23);
+            this.moveSelectionHereToolStripMenuItem.Text = "Move Selection here";
+            this.moveSelectionHereToolStripMenuItem.Click += new System.EventHandler(this.moveSelectionHereToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -265,6 +285,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ToolStripMenuItem markSelectionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem moveSelectionHereToolStripMenuItem;
     }
 }
 
