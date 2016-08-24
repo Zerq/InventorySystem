@@ -95,8 +95,15 @@ namespace Omnitory {
                         System.Drawing.Image bmp = new Bitmap(stream);
                         var image = bmp.GetThumbnailImage(32, 32, callbackAbort, IntPtr.Zero);
                         image.Save($"{AppDomain.CurrentDomain.BaseDirectory}Images/{reference}.png", format);
-                        imageList.Images.Add(this.Url, image);
+
+                        imageList.Images.RemoveByKey(reference);
+                        imageList.Images.Add(reference, image);
+
+
                     }
+
+
+
                 }
             }
         }

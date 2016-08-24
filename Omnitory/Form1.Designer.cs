@@ -45,17 +45,21 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.markSelectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moveSelectionHereToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.menuStrip3.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -224,14 +228,26 @@
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "Tags";
             // 
-            // markSelectionToolStripMenuItem
+            // tabPage3
             // 
-            this.markSelectionToolStripMenuItem.Enabled = false;
-            this.markSelectionToolStripMenuItem.Name = "markSelectionToolStripMenuItem";
-            this.markSelectionToolStripMenuItem.Size = new System.Drawing.Size(97, 23);
-            this.markSelectionToolStripMenuItem.Text = "Mark Selection";
-            this.markSelectionToolStripMenuItem.Click += new System.EventHandler(this.markSelectionToolStripMenuItem_Click);
+            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(814, 343);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Utilities";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(131, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Print A4 Barcode Sheet";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // moveSelectionHereToolStripMenuItem
             // 
             this.moveSelectionHereToolStripMenuItem.Enabled = false;
@@ -260,6 +276,7 @@
             this.tabPage2.PerformLayout();
             this.menuStrip3.ResumeLayout(false);
             this.menuStrip3.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,6 +302,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem markSelectionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem moveSelectionHereToolStripMenuItem;
     }
