@@ -26,32 +26,33 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.taglistView = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.addTagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editTagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteTagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.ItemListView = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip3 = new System.Windows.Forms.MenuStrip();
             this.addItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.markSelectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moveSelectionHereToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.taglistView = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.addTagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editTagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteTagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.markSelectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printerNameComboBox = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.menuStrip2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.menuStrip3.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.menuStrip2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,82 +67,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(822, 369);
             this.tabControl1.TabIndex = 1;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.taglistView);
-            this.tabPage1.Controls.Add(this.menuStrip2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(814, 343);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Tags";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
-            // 
-            // taglistView
-            // 
-            this.taglistView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.taglistView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.taglistView.LargeImageList = this.imageList1;
-            this.taglistView.Location = new System.Drawing.Point(3, 27);
-            this.taglistView.Name = "taglistView";
-            this.taglistView.Size = new System.Drawing.Size(808, 313);
-            this.taglistView.TabIndex = 1;
-            this.taglistView.UseCompatibleStateImageBehavior = false;
-            this.taglistView.View = System.Windows.Forms.View.Details;
-            this.taglistView.SelectedIndexChanged += new System.EventHandler(this.taglistView_SelectedIndexChanged);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Tags";
-            this.columnHeader1.Width = 728;
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "file__.png");
-            this.imageList1.Images.SetKeyName(1, "folder_.png");
-            this.imageList1.Images.SetKeyName(2, "item.png");
-            this.imageList1.Images.SetKeyName(3, "container.png");
-            // 
-            // menuStrip2
-            // 
-            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addTagToolStripMenuItem,
-            this.editTagToolStripMenuItem,
-            this.deleteTagToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(3, 3);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(808, 24);
-            this.menuStrip2.TabIndex = 0;
-            this.menuStrip2.Text = "menuStrip2";
-            // 
-            // addTagToolStripMenuItem
-            // 
-            this.addTagToolStripMenuItem.Name = "addTagToolStripMenuItem";
-            this.addTagToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-            this.addTagToolStripMenuItem.Text = "Add";
-            this.addTagToolStripMenuItem.Click += new System.EventHandler(this.addTagToolStripMenuItem_Click);
-            // 
-            // editTagToolStripMenuItem
-            // 
-            this.editTagToolStripMenuItem.Enabled = false;
-            this.editTagToolStripMenuItem.Name = "editTagToolStripMenuItem";
-            this.editTagToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editTagToolStripMenuItem.Text = "Edit";
-            this.editTagToolStripMenuItem.Click += new System.EventHandler(this.editTagToolStripMenuItem_Click);
-            // 
-            // deleteTagToolStripMenuItem
-            // 
-            this.deleteTagToolStripMenuItem.Enabled = false;
-            this.deleteTagToolStripMenuItem.Name = "deleteTagToolStripMenuItem";
-            this.deleteTagToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.deleteTagToolStripMenuItem.Text = "Delete";
-            this.deleteTagToolStripMenuItem.Click += new System.EventHandler(this.deleteTagToolStripMenuItem_Click);
             // 
             // tabPage2
             // 
@@ -175,6 +100,15 @@
             // columnHeader2
             // 
             this.columnHeader2.Width = 300;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "file__.png");
+            this.imageList1.Images.SetKeyName(1, "folder_.png");
+            this.imageList1.Images.SetKeyName(2, "item.png");
+            this.imageList1.Images.SetKeyName(3, "container.png");
             // 
             // menuStrip3
             // 
@@ -220,16 +154,84 @@
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
             this.toolStripTextBox1.Leave += new System.EventHandler(this.toolStripTextBox1_Leave);
             // 
-            // statusStrip1
+            // moveSelectionHereToolStripMenuItem
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 369);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(822, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "Tags";
+            this.moveSelectionHereToolStripMenuItem.Enabled = false;
+            this.moveSelectionHereToolStripMenuItem.Name = "moveSelectionHereToolStripMenuItem";
+            this.moveSelectionHereToolStripMenuItem.Size = new System.Drawing.Size(126, 23);
+            this.moveSelectionHereToolStripMenuItem.Text = "Move Selection here";
+            this.moveSelectionHereToolStripMenuItem.Click += new System.EventHandler(this.moveSelectionHereToolStripMenuItem_Click);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.taglistView);
+            this.tabPage1.Controls.Add(this.menuStrip2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(814, 343);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Tags";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // taglistView
+            // 
+            this.taglistView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.taglistView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.taglistView.LargeImageList = this.imageList1;
+            this.taglistView.Location = new System.Drawing.Point(3, 27);
+            this.taglistView.Name = "taglistView";
+            this.taglistView.Size = new System.Drawing.Size(808, 313);
+            this.taglistView.TabIndex = 1;
+            this.taglistView.UseCompatibleStateImageBehavior = false;
+            this.taglistView.View = System.Windows.Forms.View.Details;
+            this.taglistView.SelectedIndexChanged += new System.EventHandler(this.taglistView_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Tags";
+            this.columnHeader1.Width = 728;
+            // 
+            // menuStrip2
+            // 
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addTagToolStripMenuItem,
+            this.editTagToolStripMenuItem,
+            this.deleteTagToolStripMenuItem});
+            this.menuStrip2.Location = new System.Drawing.Point(3, 3);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(808, 24);
+            this.menuStrip2.TabIndex = 0;
+            this.menuStrip2.Text = "menuStrip2";
+            // 
+            // addTagToolStripMenuItem
+            // 
+            this.addTagToolStripMenuItem.Name = "addTagToolStripMenuItem";
+            this.addTagToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.addTagToolStripMenuItem.Text = "Add";
+            this.addTagToolStripMenuItem.Click += new System.EventHandler(this.addTagToolStripMenuItem_Click);
+            // 
+            // editTagToolStripMenuItem
+            // 
+            this.editTagToolStripMenuItem.Enabled = false;
+            this.editTagToolStripMenuItem.Name = "editTagToolStripMenuItem";
+            this.editTagToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editTagToolStripMenuItem.Text = "Edit";
+            this.editTagToolStripMenuItem.Click += new System.EventHandler(this.editTagToolStripMenuItem_Click);
+            // 
+            // deleteTagToolStripMenuItem
+            // 
+            this.deleteTagToolStripMenuItem.Enabled = false;
+            this.deleteTagToolStripMenuItem.Name = "deleteTagToolStripMenuItem";
+            this.deleteTagToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.deleteTagToolStripMenuItem.Text = "Delete";
+            this.deleteTagToolStripMenuItem.Click += new System.EventHandler(this.deleteTagToolStripMenuItem_Click);
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.printerNameComboBox);
             this.tabPage3.Controls.Add(this.button1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -248,13 +250,30 @@
             this.button1.Text = "Print A4 Barcode Sheet";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // moveSelectionHereToolStripMenuItem
             // 
-            this.moveSelectionHereToolStripMenuItem.Enabled = false;
-            this.moveSelectionHereToolStripMenuItem.Name = "moveSelectionHereToolStripMenuItem";
-            this.moveSelectionHereToolStripMenuItem.Size = new System.Drawing.Size(126, 23);
-            this.moveSelectionHereToolStripMenuItem.Text = "Move Selection here";
-            this.moveSelectionHereToolStripMenuItem.Click += new System.EventHandler(this.moveSelectionHereToolStripMenuItem_Click);
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 369);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(822, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "Tags";
+            // 
+            // markSelectionToolStripMenuItem
+            // 
+            this.markSelectionToolStripMenuItem.Enabled = false;
+            this.markSelectionToolStripMenuItem.Name = "markSelectionToolStripMenuItem";
+            this.markSelectionToolStripMenuItem.Size = new System.Drawing.Size(97, 23);
+            this.markSelectionToolStripMenuItem.Text = "Mark Selection";
+            this.markSelectionToolStripMenuItem.Click += new System.EventHandler(this.markSelectionToolStripMenuItem_Click);
+            // 
+            // printerNameComboBox
+            // 
+            this.printerNameComboBox.FormattingEnabled = true;
+            this.printerNameComboBox.Location = new System.Drawing.Point(141, 6);
+            this.printerNameComboBox.Name = "printerNameComboBox";
+            this.printerNameComboBox.Size = new System.Drawing.Size(121, 21);
+            this.printerNameComboBox.TabIndex = 1;
             // 
             // Form1
             // 
@@ -268,14 +287,14 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.menuStrip2.ResumeLayout(false);
-            this.menuStrip2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.menuStrip3.ResumeLayout(false);
             this.menuStrip3.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -304,8 +323,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ToolStripMenuItem markSelectionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem moveSelectionHereToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem markSelectionToolStripMenuItem;
+        private System.Windows.Forms.ComboBox printerNameComboBox;
     }
 }
 

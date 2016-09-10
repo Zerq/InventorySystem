@@ -44,7 +44,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.editItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.editItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editItemBindingSource)).BeginInit();
             this.SuspendLayout();
